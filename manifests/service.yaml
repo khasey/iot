@@ -4,7 +4,8 @@ metadata:
   name: wil-playground
 spec:
   ports:
-  - port: 8888
+  - port: 80        # Port sur lequel le service écoute
+    targetPort: 80  # Port sur lequel le conteneur écoute
     protocol: TCP
   selector:
     app: wil-playground
