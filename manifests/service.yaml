@@ -2,13 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: wil-playground
+  namespace: dev
 spec:
-  type: ClusterIP
-  ports:
-  - port: 8888         # Port sur lequel le service est exposé
-    targetPort: 8888   # Port sur lequel le conteneur écoute
-    protocol: TCP
+  type: NodePort
   selector:
     app: wil-playground
+  ports:
+    - port: 8888           # Port du service
+      targetPort: 8888     # Port du conteneur
+      nodePort: 30080      # Port sur le nœud (doit être entre 30000-32767)
+      protocol: TCP
 
 
